@@ -27,8 +27,41 @@ Serving the HTML pages.
 Testing the webserver
 
 ## PROGRAM:
+```content='''
+<!doctype html>
+<html>
+<head>
+<title> My Web Server</title>
+</head>
+<body>
+<h1>Top Five Web Application Development Frameworks</h1>
+<h2>1.Django</h2>
+<h2>2. MEAN Stack</h2>
+<h2>3. React </h2>
+<h2>4. Spring </h2>
+<h2>5. Angular </h2>
+</body>
+</html>
+'''
+class MyServer(BaseHTTPRequestHandler):
+def do_GET(self):
+print("Get request received...")
+self.send_response(200)
+self.send_header("content-type", "text/html")
+self.end_headers()
+self.wfile.write(content.encode())
+print("This is my webserver")
+server_address =('',8000)
+httpd = HTTPServer(server_address,MyServer)
+httpd.serve_forever()
+```
 
 ## OUTPUT:
+## SERVER OUTPUT:
+![Screenshot 2023-12-31 200212](https://github.com/gowriganeshns/webserver/assets/145972112/4318194f-9318-4ff4-80d4-5d4e7468189e)
+
+## CLIENT OUTPUT:
+![Screenshot 2023-12-31 200407](https://github.com/gowriganeshns/webserver/assets/145972112/930ad13b-be2f-4a81-ab89-be865f9fa423)
 
 ## RESULT:
 The program is executed succesfully
